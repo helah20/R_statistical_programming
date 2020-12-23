@@ -1,0 +1,75 @@
+---
+title: "Probability and Decision Analysis"
+author: "Hailah Alharthi"
+output: html_document
+---
+## Assignment Question:
+
+
+### Build a report for LP Brewery telling them all the information from their new problem with Grape Soda and their previous problem before implementing Grape Soda. Use at least 3 markdown techniques
+
+## Solution:
+#### *Load library*
+```{r}
+library(lpSolve)
+```
+
+#### *Assign the Objective*
+```{r}
+objective_coeff = c(13,23,30)
+```
+#### *Assign Constrains*
+```{r}
+constrains= matrix(c(
+  5,15,10,
+  4,4,4,
+  35,20,15,
+  5,10,20
+  
+  ),
+  
+  nrow = 4, byrow = TRUE)
+
+```
+#### *Assign Direction*
+```{r}
+
+direction = c('<=',
+              '<=',
+              '<=',
+              '<=')
+
+
+```
+#### *Assign Resorces*
+```{r}
+
+resources = c(480,
+              160,
+              1190,
+              800)
+
+
+```
+#### *Start Solving*
+```{r}
+solve = lp(
+  direction = 'max',
+  objective.in = objective_coeff,
+  const.mat = constrains,
+  const.dir = direction,
+  const.rhs = resources)
+
+```
+#### *The Total Profit is*
+```{r}
+solve$objval
+```
+#### *Best values for x1, x2 and x3*
+```{r}
+solve$solution
+```
+
+### so as seen the best option is baching Grape
+
+
