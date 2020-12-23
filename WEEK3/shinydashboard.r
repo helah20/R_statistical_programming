@@ -1,11 +1,12 @@
- library(shinydashboard)
-# library(semantic.dashboard)
-library(shiny)
-library(DT)
-
-# install.packages("DT")
 # install.packages("semantic.dashboard")
+# library(semantic.dashboard) to use theme on dashboard 
 
+library(shinydashboard)
+library(shiny)
+# install.packages("DT")
+library(DT)
+ # View(iris)
+ #View(cars)
 ui <- dashboardPage( skin="blue",
   dashboardHeader(title = "my dashboard"),
   
@@ -20,7 +21,7 @@ ui <- dashboardPage( skin="blue",
   dashboardBody( 
     tabItems(
       tabItem("iris",
-              box(plotOutput("correlation_plot"),width = 8),
+              box(plotOutput("correlation_plot"),width = 8),# any thing we defind it here we must activate it in server
               box(
                 selectInput("features", "Features:",
                             c("Sepal.Width", "Petal.Length",
